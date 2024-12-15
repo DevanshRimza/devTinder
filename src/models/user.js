@@ -39,12 +39,16 @@ const userSchema=new mongoose.Schema({
     },
     gender : {
         type : String,
-        validate(value) {
-            if(!["male","female","others"].includes(value)){
-                throw new Error("Gender data is not valid");
-            }
+        enum : {
+           values : ["male","female","other"],
+           message : `{VALUE} is not a valid gender type`,
         },
-    },
+
+        //validate(value) {
+        //                throw new Error("Gender data is not valid");
+        //  }
+        //   },
+     },
     photoUrl : {
         type : String,
         default : "https://med.gov.bz/ppu-staff-profiles/dummy-profile-pic/",
