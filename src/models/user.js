@@ -51,7 +51,7 @@ const userSchema=new mongoose.Schema({
      },
     photoUrl : {
         type : String,
-        default : "https://med.gov.bz/ppu-staff-profiles/dummy-profile-pic/",
+        default : "https://t4.ftcdn.net/jpg/08/19/66/31/360_F_819663119_che4sZSrmQv8uQJOzuN9TVQFQNHJlfQ2.jpg",
         validate(value) {
             if(!validator.isURL(value)){
                throw new Error("Invalid Photo URL : "+value);
@@ -82,4 +82,6 @@ userSchema.methods.validatePassword = async function(passwordInputByUser) {
     return isPasswordValid;
 };
 
-module.exports=mongoose.model("User",userSchema);;
+module.exports=mongoose.model("User",userSchema);
+
+

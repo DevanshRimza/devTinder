@@ -26,8 +26,17 @@ const bcrypt = require("bcrypt");
        password : passwordHash,
       });
       
-       await user.save();
-       res.send("User added successfully..!");
+       //await user.save();
+       //res.send("User added successfully..!");
+
+       const savedUser = await user.save();
+       const token = await savedUser.getJWT();
+
+       res.cookie("token", token, {
+         expires: new Date(Date.now() + 8 * 3600000),
+       });
+
+      res.json({ message: "User Added successfully!", data: savedUser });
     }catch(err) {
        res.status(400).send("ERROR : "+err.message);
     }
@@ -64,7 +73,8 @@ const bcrypt = require("bcrypt");
          });
  
  
-          res.send("Login successful !!!")
+          //res.send("Login successful !!!")
+          res.send(user);
        }else {
           throw new Error("Invalid credentials");
        }

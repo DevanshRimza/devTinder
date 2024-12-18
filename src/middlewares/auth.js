@@ -5,10 +5,13 @@ const userAuth = async (req,res,next) => {
 
    try
    {
+    // if (req.method === "OPTIONS") return next(); // Let preflight pass
+
     const {token} = req.cookies;
 
     if(!token){
-        throw new Error("Token is not valid !!!!!!");
+       // throw new Error("Token is not valid !!!!!!");
+        return res.status(401).send("Please Login!");
     }
    
    const decodedObj = await jwt.verify(token,"DEV@Tinder$790");
