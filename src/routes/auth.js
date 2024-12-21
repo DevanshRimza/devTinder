@@ -62,7 +62,6 @@ const bcrypt = require("bcrypt");
         // Create the JWT Token
  
          const token=await user.getJWT();
-         console.log("token-----------------------------------------------------------",token);
  
         // Add the token to cookie and send the respose to the user
  
@@ -77,7 +76,6 @@ const bcrypt = require("bcrypt");
           expires : new Date(Date.now() + 8*3600000),
          });
  */
-      console.log("cookie--------------------------------------------------",res.cookie);
           //res.send("Login successful !!!")
           res.send(user);
        }else {
