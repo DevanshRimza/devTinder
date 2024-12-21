@@ -62,17 +62,22 @@ const bcrypt = require("bcrypt");
         // Create the JWT Token
  
          const token=await user.getJWT();
- 
+         console.log("token-----------------------------------------------------------",token);
  
         // Add the token to cookie and send the respose to the user
  
         
- 
-         res.cookie("token",token,{
+        res.cookie("token", token, {
+         httpOnly: true,
+         secure: false, // Use this only in production with HTTPS
+         sameSite: "Lax", // Adjust SameSite policy if needed
+         expires: new Date(Date.now() + 8 * 3600000),
+       });
+         /*res.cookie("token",token,{
           expires : new Date(Date.now() + 8*3600000),
          });
- 
- 
+ */
+      console.log("cookie--------------------------------------------------",res.cookie);
           //res.send("Login successful !!!")
           res.send(user);
        }else {
