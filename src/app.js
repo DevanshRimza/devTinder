@@ -9,7 +9,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://dev-tinder-web-git-main-devansh-rimzas-projects.vercel.app/",
     credentials: true,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
