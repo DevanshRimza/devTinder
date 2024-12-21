@@ -9,7 +9,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://dev-tinder-web-ashy.vercel.app/",
     credentials: true,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
