@@ -69,8 +69,8 @@ const bcrypt = require("bcrypt");
         
         res.cookie("token", token, {
          httpOnly: true,
-         secure: false, // Use this only in production with HTTPS
-         sameSite: "Lax", // Adjust SameSite policy if needed
+         secure: true, // Use this only in production with HTTPS
+         sameSite: "none", // Adjust SameSite policy if needed
          expires: new Date(Date.now() + 8 * 3600000),
        });
          /*res.cookie("token",token,{
